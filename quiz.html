@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<body>
+
+    <div class="quiz-container">
+        <h1>Quiz App</h1>
+        <form id="quiz-form">
+            <!-- Add your quiz questions and options here -->
+            <p class="quiz-question" id="question1">what is the third angle for the triangle where angle1=45 and angle2=45 ?</p>
+            <label class="quiz-option">
+                <input type="radio" name="question1" value="option1">60
+            </label>
+            <label class="quiz-option">
+                <input type="radio" name="question1" value="option2">45
+            </label>
+            <label class="quiz-option">
+                <input type="radio" name="question1" value="option8">90
+            </label>
+            <label class="quiz-option">
+                <input type="radio" name="question1" value="option4">180
+            </label>
+            <p class="quiz-question" id="question2">if a triangle has an angle of 90 degree , what is it called ?</p>
+            <label class="quiz-option">
+                <input type="radio" name="question2" value="option8">Right
+            </label>
+            <label class="quiz-option">
+                <input type="radio" name="question2" value="option2">isso
+            </label>
+            <label class="quiz-option">
+                <input type="radio" name="question2" value="option3">obtuse
+            </label>
+            <label class="quiz-option">
+                <input type="radio" name="question2" value="option4">acute
+            </label>
+<br>
+<br>
+
+
+            <button type="submit" class="quiz-submit-button">Submit</button>
+        </form>
+        <div id="quiz-result"></div>
+    </div>
+    <script>
+        const form = document.getElementById('quiz-form');
+        const quizResult = document.getElementById('quiz-result');
+
+        form.addEventListener('submit', e => {
+        e.preventDefault();
+
+        
+        let correctAnswers = 0;
+
+       
+        for (let i = 1; i <= 2; i++) {
+           
+            const options = form.elements[`question${i}`];
+
+           
+            for (let j = 0; j < options.length; j++) {
+               
+                if (options[j].value === 'option8' && options[j].checked) {
+                    correctAnswers++;
+                    
+                    document.getElementById(`question${i}`).style.color = 'green';
+                } else if (options[j].checked) {
+                    
+                    document.getElementById(`question${i}`).style.color = 'red';
+                }
+            }
+        }
+
+        quizResult.innerHTML = `You got ${correctAnswers} out of 2 questions correct!`;
+    });
+
+
+
+    </script>
+</body>
+
+
+</html>
